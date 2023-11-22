@@ -1,10 +1,12 @@
 package manage;
 
 import com.microsoft.playwright.*;
+import io.qameta.allure.Step;
 
 import java.nio.file.Paths;
 
 import static com.microsoft.playwright.Playwright.create;
+import static utils.AllureReportUtils.allureVid;
 
 public class BrowserManager {
 
@@ -12,11 +14,13 @@ public class BrowserManager {
     private Browser browser;
     private final BrowserContext context;
     public Page page;
+    private final String videoPath;
 
     public BrowserManager(String browserType, String testName) {
         playwright = create();
         initBrowserType(browserType);
-        context = browser.newContext(new Browser.NewContextOptions().setRecordVideoDir(Paths.get("./videosTest/" + testName)));
+        videoPath = "./videosTest/" + testName;
+        context = browser.newContext(new Browser.NewContextOptions().setRecordVideoDir(Paths.get(videoPath)));
         page = context.newPage();
     }
 
@@ -25,6 +29,7 @@ public class BrowserManager {
         context.close();
         browser.close();
         playwright.close();
+        allureVid(videoPath);
     }
 
     private void initBrowserType(String browserType) {
@@ -44,6 +49,7 @@ public class BrowserManager {
         }
     }
 
+    @Step("Navigate to {}")
     public void navigateTo(String url) {
         page.navigate(url);
     }

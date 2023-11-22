@@ -1,7 +1,9 @@
 plugins {
     id 'java'
+    id 'io.qameta.allure' version '2.11.0'
 }
 
+def allureVersion = "2.24.0"
 group = 'org.example'
 version = '1.0-SNAPSHOT'
 compileJava { options.encoding = "UTF-8" }
@@ -23,6 +25,16 @@ dependencies {
 
     // lombok
     compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.28'
+
+    // Allure report
+    // Import allure-bom to ensure correct versions of all the dependencies are used
+    implementation platform("io.qameta.allure:allure-bom:$allureVersion")
+    // Add necessary Allure dependencies to dependencies section
+    implementation "io.qameta.allure:allure-junit5"
+
+
+    // https://mvnrepository.com/artifact/org.apache.directory.studio/org.apache.commons.io
+    implementation group: 'org.apache.directory.studio', name: 'org.apache.commons.io', version: '2.4'
 
 }
 

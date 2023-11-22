@@ -13,7 +13,7 @@ public abstract class BaseTest {
 
     @BeforeEach
     protected void beforeTest(TestInfo testInfo) {
-        String testPath = testInfo.getClass().getName() + testInfo.getDisplayName().replace("()", "");
+        String testPath = testInfo.getDisplayName().replace("()", "");
         browserManager = new BrowserManager("", videoPath + testPath);
     }
 
