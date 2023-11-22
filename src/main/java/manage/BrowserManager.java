@@ -2,19 +2,21 @@ package manage;
 
 import com.microsoft.playwright.*;
 
+import java.nio.file.Paths;
+
 import static com.microsoft.playwright.Playwright.create;
 
 public class BrowserManager {
 
     private final Playwright playwright;
-    private final Browser browser;
+    private Browser browser;
     private final BrowserContext context;
     public Page page;
 
-    public BrowserManager() {
+    public BrowserManager(String browserType, String testName) {
         playwright = create();
-        browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(false));
-        context = browser.newContext();
+        initBrowserType(browserType);
+        context = browser.newContext(new Browser.NewContextOptions().setRecordVideoDir(Paths.get("./videosTest/" + testName)));
         page = context.newPage();
     }
 
@@ -23,6 +25,23 @@ public class BrowserManager {
         context.close();
         browser.close();
         playwright.close();
+    }
+
+    private void initBrowserType(String browserType) {
+
+        switch (browserType.toLowerCase()) {
+            case "firefox": {
+                browser = playwright.firefox().launch();
+                break;
+            }
+            case "webkit": {
+                browser = playwright.webkit().launch();
+                break;
+            }
+            default: {
+                browser = playwright.chromium().launch();
+            }
+        }
     }
 
     public void navigateTo(String url) {
