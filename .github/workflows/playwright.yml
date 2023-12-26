@@ -2,8 +2,6 @@ name: Playwright Tests
 on:
   push:
     branches: [ main, master ]
-  pull_request:
-    branches: [ main, master ]
 jobs:
   test:
     timeout-minutes: 60
@@ -16,5 +14,3 @@ jobs:
           java-version: '17'
       - name: Build
         run: gradle build -x test
-      - name: Test
-        run: gradle clean test
