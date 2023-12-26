@@ -15,6 +15,6 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
       - name: Build
-        run: gradle build
+        run: gradle -Dskip.tests build
       - name: Test
         run: gradle clean test
