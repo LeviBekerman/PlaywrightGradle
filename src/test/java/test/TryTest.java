@@ -7,7 +7,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import ui.elements.ButtonElement;
 import ui.elements.TextInputElement;
-
 import static io.qameta.allure.SeverityLevel.CRITICAL;
 
 
@@ -25,7 +24,6 @@ public class TryTest extends BaseTest {
         getCode(browserManager,"1email@gmail.com");
     }
 
-
     @Test
     public void tow() {
         getCode(browserManager,"2email@gmail.com");
@@ -41,6 +39,55 @@ public class TryTest extends BaseTest {
     public void fore() {
         getCode(browserManager,"4email@gmail.com");
     }
+
+
+    @Test
+    public void five() {
+        getCode(browserManager,"5email@gmail.com");
+    }
+
+
+    @Test
+    public void six() {
+        getCode(browserManager,"6email@gmail.com");
+    }
+
+
+    @Test
+    public void seven() {
+        getCode(browserManager,"7email@gmail.com");
+    }
+
+
+    @Test
+    public void aith() {
+        getCode(browserManager,"8email@gmail.com");
+    }
+
+
+    @Test
+    public void nine() {
+        getCode(browserManager,"9email@gmail.com");
+    }
+
+
+    @Test
+    public void ten() {
+        getCode(browserManager,"10email@gmail.com");
+    }
+
+
+    @Test
+    public void eleven() {
+        getCode(browserManager,"11email@gmail.com");
+    }
+
+
+    @Test
+    public void tuwelf() {
+        getCode(browserManager,"12email@gmail.com");
+    }
+
 
     private void getCode(BrowserManager browserManager, String email) {
 

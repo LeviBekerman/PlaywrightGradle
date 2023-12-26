@@ -30,6 +30,7 @@ public class BrowserManager {
         browser.close();
         playwright.close();
         allureVid(videoPath);
+
     }
 
     private void initBrowserType(String browserType) {
