@@ -9,7 +9,7 @@ import org.junit.jupiter.api.extension.ExtensionContext;
 import static utils.DateTimeUtils.getCurrentDateTime;
 import static utils.DateTimeUtils.getLocalDateTimeBy;
 
-//@ExtendWith(AllureExtension.class)
+@ExtendWith(AllureExtension.class)
 public abstract class BaseTest {
     protected BrowserManager browserManager;
     private final String videoPath = getLocalDateTimeBy(getCurrentDateTime(), "dd-MM-yyyy HH-mm") + "/";
